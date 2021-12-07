@@ -1062,7 +1062,7 @@ export const countries: CountryMap = {
     phonePrefix: '234',
     sizeOfNSN: { min: 8, max: 8 }
   },
-  Niue: {
+  NU: {
     countryName: 'Niue',
     iso2: 'NU',
     phonePrefix: '683',
@@ -1328,7 +1328,7 @@ export const countries: CountryMap = {
     phonePrefix: '421',
     sizeOfNSN: { min: 9, max: 9 }
   },
-  Slovenia: {
+  SI: {
     countryName: 'Slovenia',
     officialName: 'Slovenija',
     iso2: 'SI',
