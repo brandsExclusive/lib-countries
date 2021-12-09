@@ -11,8 +11,10 @@ interface CountryMap {
 }
 
 /*
- * General source for phone pattern sizes: https://en.wikipedia.org/wiki/List_of_mobile_telephone_prefixes_by_country
- * phonePattern = size of NSN
+ * Table of data extracted from:
+ * https://en.wikipedia.org/wiki/List_of_mobile_telephone_prefixes_by_country
+ *
+ * See "Size of NSN" column.
  */
 export const countries: CountryMap = {
   AF: {
