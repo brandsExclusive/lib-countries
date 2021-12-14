@@ -11,12 +11,32 @@ interface CountryMap {
 }
 
 /*
+ * Return a list of country names
+ * @deprecated
+ */
+export function getCountries(): string[] {
+  return Object.values(countries).map((c) => c.countryName)
+}
+
+export function getCountryNames(): string[] {
+  return Object.values(countries).map((c) => c.countryName)
+}
+
+export function getCountryObjs(): Country[] {
+  return Object.values(countries)
+}
+
+export function isoLookup(key: string): Country | undefined {
+  return countries[key]
+}
+
+/*
  * Table of data extracted from:
  * https://en.wikipedia.org/wiki/List_of_mobile_telephone_prefixes_by_country
  *
  * See "Size of NSN" column.
  */
-export const countries: CountryMap = {
+const countries: CountryMap = {
   AF: {
     countryName: 'Afghanistan',
     officialName: '‫افغانستان‬‎',
