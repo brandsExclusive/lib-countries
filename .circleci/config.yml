@@ -1,34 +1,42 @@
 version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:16
+
 jobs:
   test:
-    docker:
-      - image: circleci/node:8.10.0
+    <<: *defaults
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-
       - run: yarn install
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
-
+      - run: yarn lint
       - run: yarn test
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
-experimental:
-  notify:
-    branches:
-      only:
-        - master
+  publish:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Publish package
+          command: npm publish
 
 workflows:
   version: 2
-  test:
+  test-publish:
     jobs:
-      - test
+      - test:
+          context: LE
+      - publish:
+          context: LE
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
