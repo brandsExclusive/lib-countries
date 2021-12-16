@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "outDir": "./lib",
-    "rootDir": "./src",
     "target": "es5",
-    "declaration": true,
-    "lib": ["dom", "es2017"],
     "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "src",
     "strict": true,
-    "esModuleInterop": true
-  },
-  "exclude": [
-    "*/**.test.ts"
-  ]
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "es2017"]
+  }
 }
