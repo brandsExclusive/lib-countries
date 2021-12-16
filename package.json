@@ -1,15 +1,11 @@
 {
   "name": "@luxuryescapes/lib-countries",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Country information for Luxury Escapes",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "repository": "https://github.com/brandsExclusive/lib-countries",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/lux-group/lib-countries",
   "license": "UNLICENSED",
-  "files": [
-    "lib",
-    "src"
-  ],
   "scripts": {
     "build": "rm -rf dist && tsc",
     "lint": "eslint src --ext .js,.ts",
