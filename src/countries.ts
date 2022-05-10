@@ -36,7 +36,7 @@ export function isoLookup(key: string): Country | undefined {
  *
  * See "Size of NSN" column.
  */
-const countries: CountryMap = {
+export const countries: CountryMap = {
   AF: {
     countryName: 'Afghanistan',
     officialName: '‫افغانستان‬‎',
