@@ -5,7 +5,7 @@ describe('country data', () => {
     const names = getCountryNames();
 
     expect(names[0]).toEqual('Afghanistan');
-    expect(names[names.length-1]).toEqual('Zimbabwe');
+    expect(names[names.length - 1]).toEqual('Zimbabwe');
   })
 
   test('ISO lookup returns the correct country object', () => {
@@ -40,6 +40,42 @@ describe('country data', () => {
     };
 
     expect(objects[0]).toEqual(firstObj);
-    expect(objects[objects.length-1]).toEqual(lastObj);
+    expect(objects[objects.length - 1]).toEqual(lastObj);
   })
+
+  test('isoLookup returns correct country object for all ISO codes', () => {
+    const countries = getCountryObjs();
+    const isoCodes = countries.map(country => country.iso2);
+
+    isoCodes.forEach(isoCode => {
+      const expectedCountry = countries.find(country => country.iso2 === isoCode);
+      const result = isoLookup(isoCode);
+
+      expect(result).toEqual(expectedCountry);
+    });
+  });
+
+
+  test('All country names are unique', () => {
+    const names = getCountryNames();
+    const uniqueNames = new Set(names);
+    expect(uniqueNames.size).toEqual(names.length);
+  });
+
+  test('All ISO codes are unique and are two uppercase letters', () => {
+    const countries = getCountryObjs();
+    const isoCodes = countries.map(country => country.iso2);
+    const uniqueIsoCodes = new Set(isoCodes);
+
+    expect(uniqueIsoCodes.size).toEqual(isoCodes.length);
+    isoCodes.forEach(isoCode => {
+      expect(isoCode).toMatch(/^[A-Z]{2}$/);
+    });
+  });
+
+  test('isoLookup returns undefined for invalid ISO codes', () => {
+    expect(isoLookup('INVALID')).toBeUndefined();
+    expect(isoLookup('')).toBeUndefined();
+    expect(isoLookup('ZZ')).toBeUndefined();
+  });
 })
