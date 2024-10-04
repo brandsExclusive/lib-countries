@@ -951,7 +951,7 @@ const countries: CountryMap = {
     phonePrefix: '230',
     sizeOfNSN: { min: 8, max: 8 }
   },
-  Mayotte: {
+  YT: {
     countryName: 'Mayotte',
     iso2: 'YT',
     phonePrefix: '262',
@@ -1488,7 +1488,7 @@ const countries: CountryMap = {
     phonePrefix: '670',
     sizeOfNSN: { min: 8, max: 8 }
   },
-  TG : {
+  TG: {
     countryName: 'Togo',
     iso2: 'TG',
     phonePrefix: '228',
